@@ -1,0 +1,15 @@
+language: php
+
+php:
+  - 7.2
+  - 7.3
+
+install:
+  - composer install --dev
+
+script:
+  - vendor/bin/phpunit
+  - vendor/bin/phpcs
+
+after_script:
+  - vendor/bin/test-reporter
