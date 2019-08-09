@@ -7,10 +7,37 @@
 
 namespace Thunder;
 
+use Thunder\Utils\UtilsWrapper;
+
 class Application
 {
 
-    public function __construct()
+    /**
+     * Default options.
+     *
+     * @var array
+     */
+    private static $DEFAULT_OPTIONS = [
+        'base'        => '.',
+        'environment' => 'global'
+    ];
+
+    /**
+     * Active options.
+     *
+     * @var array
+     */
+    private $options;
+
+    /**
+     * @var Thunder\Tests\Utils\UtilsWrapper
+     */
+    private $utilsWrapper;
+
+    public function __construct(array $options = [])
     {
+        $this->options =
+            array_merge(self::$DEFAULT_OPTIONS, $options);
+        $this->utilsWrapper = new UtilsWrapper($this);
     }
 }
